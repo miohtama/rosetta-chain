@@ -2,28 +2,41 @@
 
 ## Generating validator key
 
-[This is required](https://github.com/ElrondNetwork/elrond-go/issues/3367).
+[Valiator key is required even though not used](https://github.com/ElrondNetwork/elrond-go/issues/3367).
 
-We [generate key PEM file with erdpy](https://docs.elrond.com/sdk-and-tools/erdpy/deriving-the-wallet-pem-file/#docsNav).
+Creating the validator key by [compiling necessary Elrond binaries](https://github.com/ElrondNetwork/elrond-go) and running `keygenerator`:
 
-```shell
-python -m venv venv
-source venv/bin/activate
-pip install erdpy
+```sh
+git clone https://github.com/ElrondNetwork/elrond-go
+cd elrond-go
+GO111MODULE=on go mod vendor
+(cd cmd/keygenerator && go build)
 ```
 
-Creating the key:
+Generate keys:
 
+```sh
+cmd/keygenerator/keygenerator --console-out
 ```
-erdpy wallet derive validator.pem
-```
+
+Then save this output in `validator.pem`.
 
 ## Running node
+
+Docker Compose maps the local `validator.pem` for the node to start.
 
 Run
 
 ```shell
 docker-compose up elrond
+```
+
+## Testing the node
+
+You should see the node connecting to the network:
+
+```
+    
 ```
 
 ## Documentation

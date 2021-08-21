@@ -2,6 +2,8 @@
 
 A smart contract with Hello World string and a counter.
 
+Note this example is in C, although Elrond smart contract SDK is Rust based.
+
 ## How to create a project template
 
 [Documentation](https://docs.elrond.com/developers/tutorials/counter/).

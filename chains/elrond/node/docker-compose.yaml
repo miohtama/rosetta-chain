@@ -7,8 +7,10 @@ services:
     image: elrondnetwork/elrond-go-node-testnet:T1.2.11.0
     restart: always
     container_name: elrond
-    #command:
+
+    command: --port 37373 --rest-api-interface 127.0.0.1:9999
     volumes:
       - ./validator.pem:/go/elrond-go/cmd/node/config/validatorKey.pem
     ports:
       - "37373:37373" # p2p
+      - "127.0.0.1:9999:9999" # RPC
