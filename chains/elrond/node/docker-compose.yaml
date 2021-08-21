@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  # https://docs.elrond.com/validators/testnet/use-docker-testnet/
+  # https://hub.docker.com/r/elrondnetwork/elrond-go-node-testnet
+  elrond:
+    image: elrondnetwork/elrond-go-node-testnet:T1.2.11.0
+    restart: always
+    container_name: elrond
+    #command:
+    volumes:
+      - ./validator.pem:/go/elrond-go/cmd/node/config/validatorKey.pem
+    ports:
+      - "37373:37373" # p2p
