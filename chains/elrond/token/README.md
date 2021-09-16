@@ -197,15 +197,12 @@ tx = Transaction()
 tx.nonce = sender.nonce
 tx.value = "0"  # Must be zero?
 tx.sender = sender.address.bech32()
-# System contract address to issue out the new token as per
-# https://docs.elrond.com/developers/esdt-tokens/#issuance-of-fungible-esdt-tokens
-# https://docs.elrond.com/developers/esdt-tokens/#issuance-examples
 tx.receiver = receiver
 tx.gasPrice = 1000000000
 tx.gasLimit = 500_000  # https://docs.elrond.com/developers/esdt-tokens/#transfers
 tx.data = f"ESDTTransfer" \
           f"@{hex_string(TOKEN_ID)}" \
-          f"@{hex_int(token_value)}"
+          f"@{hex_int(token_value)}"    
 
 tx.chainID = "D"  # For devnet https://devnet-gateway.elrond.com/network/config
 tx.version = 1  # No idea where this should come from, because the lack of documentation
